@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Navbar.module.css";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   bgColor: string;
@@ -12,6 +13,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ bgColor, setMobileMenuOpen }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     const newState = !isMenuOpen;
@@ -33,6 +35,16 @@ const Navbar: React.FC<NavbarProps> = ({ bgColor, setMobileMenuOpen }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [isMenuOpen, setMobileMenuOpen]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+      if (setMobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return (
     <nav className={`${styles.navbar} ${styles[bgColor]}`}>
