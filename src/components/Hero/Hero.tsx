@@ -43,7 +43,7 @@ const Hero: React.FC<HeroProps> = ({
           )}
           {buttonText2 && (
             <button className="button secondaryButton">
-              <Link href="/usluge" className="secondaryButtonLink">
+              <Link href="/usluge#firstService" className="secondaryButtonLink">
                 {buttonText2}
               </Link>
             </button>

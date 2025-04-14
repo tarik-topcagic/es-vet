@@ -105,7 +105,7 @@ export default function ServicesPreview() {
 
       <div className={styles.buttonRow}>
         <button className="button secondaryButton">
-          <Link href="/usluge" className="secondaryButtonLink">
+          <Link href="/usluge#firstService" className="secondaryButtonLink">
             Saznaj više
           </Link>
         </button>
