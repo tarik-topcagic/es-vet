@@ -35,13 +35,17 @@ const Hero: React.FC<HeroProps> = ({
         <p className={styles.subtitle}>{subtitle}</p>
         <div className={styles.buttons}>
           {buttonText1 && (
-            <button className={`${styles.button} ${styles.button1}`}>
-              <Link href="/kontakt" className={styles.linkButton1}>{buttonText1}</Link>
+            <button className="button primaryButton">
+              <Link href="/kontakt" className="primaryButtonLink">
+                {buttonText1}
+              </Link>
             </button>
           )}
           {buttonText2 && (
-            <button className={`${styles.button} ${styles.button2}`}>
-              <Link href="/usluge" className={styles.linkButton2}>{buttonText2}</Link>
+            <button className="button secondaryButton">
+              <Link href="/usluge" className="secondaryButtonLink">
+                {buttonText2}
+              </Link>
             </button>
           )}
         </div>

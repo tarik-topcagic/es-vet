@@ -3,6 +3,9 @@
 import React from 'react';
 import Hero from '../components/Hero/Hero';
 import heroImage from '../../public/hero1.png';
+import ServicesPreview from '@/components/ServicesPreview/ServicesPreview';
+import AboutPreview from '@/components/AboutPreview/AboutPreview';
+import SloganPreview from '@/components/SloganPreview/SloganPreview';
 
 const Home: React.FC = () => {
   return (
@@ -16,6 +19,9 @@ const Home: React.FC = () => {
         mobileNumber="+(387) 062-647-943"
         imageUrl={heroImage.src} 
       />
+      <ServicesPreview/>
+      <AboutPreview/>
+      <SloganPreview/>
     </div>
   );
 };

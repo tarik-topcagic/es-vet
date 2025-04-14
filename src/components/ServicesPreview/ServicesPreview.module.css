@@ -1,0 +1,144 @@
+.servicesPreviewContainer {
+  position: relative;
+  width: 95%;
+  margin: -100px auto 0 auto;
+  margin-bottom: 80px;
+  background-color: #ffffff;
+  padding: 3rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+.sectionTitle {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #055b67;
+  text-align: left;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.5rem;
+  justify-items: center;
+  margin-bottom: 2rem;
+}
+
+.serviceBlock {
+  background-color: #eef8f9;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.serviceContent {
+  display: flex;
+  align-items: center;
+}
+
+.iconCircle {
+  background-color: #3fa9a4;
+  width: 100px;
+  height: 100px;
+  margin-right: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.serviceIcon {
+  width: 60px;
+  height: 60px;
+  filter: brightness(0) invert(1);
+}
+
+.textContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.serviceTitle {
+  font-size: 1.1rem;
+  color: #055b67;
+  font-weight: 600;
+  margin: 0;
+}
+
+.serviceText {
+  font-size: 1rem;
+  color: #055b67;
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .headerRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .buttonRow {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    justify-items: stretch;
+    margin-bottom: 1.5rem;
+  }
+
+  .serviceContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .iconCircle {
+    margin: 0 auto 1rem auto;
+  }
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .servicesPreviewContainer {
+    margin: -50px auto 0 auto;
+  }
+}
+
+@media (max-width: 450px) {
+  .sectionTitle {
+    font-size: 1.4rem;
+  }
+}
