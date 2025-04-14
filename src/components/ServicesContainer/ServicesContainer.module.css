@@ -1,0 +1,102 @@
+.servicesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.serviceBlock {
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+  gap: 3rem;
+  box-sizing: border-box;
+}
+
+.oddBlock {
+  background-color: #ffffff;
+}
+
+.evenBlock {
+  background-color: #eef8f9;
+}
+
+.serviceText {
+  flex: 1;
+  margin: 0;
+  text-align: left;
+}
+
+.evenBlock .serviceText {
+  text-align: right;
+}
+
+.serviceText h3 {
+  margin-bottom: 1.4rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #055b67;
+}
+
+.serviceText p {
+  font-size: 1rem;
+  color: #055b67;
+}
+
+.serviceImage {
+  flex-shrink: 0;
+}
+
+.squareImage {
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+  .serviceBlock {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .serviceImage {
+    order: 1;
+    margin-bottom: 0;
+  }
+
+  .serviceText {
+    order: 2;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .evenBlock .serviceText {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .serviceText {
+    order: 2;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .evenBlock .serviceText {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .serviceText h3 {
+    font-size: 1.4rem;
+  }
+}
