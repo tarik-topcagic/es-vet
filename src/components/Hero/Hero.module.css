@@ -52,42 +52,6 @@
   gap: 10px;
 }
 
-.button {
-  font-size: 1rem;
-  padding: 0.8rem 1.6rem;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: opacity 0.3s ease;
-}
-
-.button1 {
-  background-color: #3fa9a4;
-  color: white;
-  border: none;
-  text-align: center;
-}
-
-.button2 {
-  background-color: white;
-  color: #055b67;
-  border: 1px solid #055b67;
-  text-align: center;
-}
-
-.button:hover {
-  opacity: 0.7;
-}
-
-.linkButton1 {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.linkButton2 {
-  text-decoration: none;
-  color: #054a63;
-}
-
 .contactInfo {
   margin-top: 1.2rem;
   font-size: 1rem;
@@ -123,7 +87,7 @@
 
 @media (max-width: 700px) {
   .hero {
-    height: 700px;
+    height: 750px;
     background-position: center top;
   }
 
@@ -165,23 +129,6 @@
     justify-content: center;
   }
 
-  .button {
-    font-size: 1rem;
-    white-space: nowrap;
-  }
-
-  .button:hover {
-    opacity: 0.9;
-  }
-
-  .button1 {
-    color: #eef8f9;
-  }
-
-  .button2 {
-    color: #055b67;
-  }
-
   .contactInfo {
     font-size: 1rem;
     color: #eef8f9;
@@ -194,7 +141,7 @@
 
 @media (max-width: 450px) {
   .hero {
-    height: 600px;
+    min-height: 100vh;
     background: linear-gradient(135deg, #054a63, #3fa9a4) !important;
     background-position: center top;
   }
@@ -204,7 +151,7 @@
   }
 
   .heroContent {
-    top: 50%;
+    top: 44%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -235,24 +182,6 @@
 
   .buttons {
     justify-content: center;
-  }
-
-  .button {
-    font-size: 1rem;
-    white-space: nowrap;
-  }
-
-  .button:hover {
-    opacity: 0.7;
-  }
-
-  .button1 {
-    color: #eef8f9;
-    border: 1px solid #ffffff;
-  }
-
-  .button2 {
-    color: #055b67;
   }
 
   .contactInfo {
