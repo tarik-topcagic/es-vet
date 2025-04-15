@@ -1,0 +1,167 @@
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 4rem;
+  gap: 3rem;
+}
+
+.textColumn {
+  flex: 1;
+  margin: 0;
+  text-align: left;
+}
+
+.title {
+  margin-bottom: 1.4rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #055b67;
+}
+
+.paragraph {
+  font-size: 1rem;
+  color: #055b67;
+}
+
+.evenBlock .textColumn {
+  text-align: right;
+}
+
+.imgColumn {
+  flex-shrink: 0;
+}
+
+.squareImage {
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.squareImage2 {
+  object-fit: cover;
+  width: 350px;
+  height: 400px;
+  border-radius: 10px;
+}
+
+.imageRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 3rem;
+  margin-top: 5rem;
+  padding: 4rem;
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.imageItem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.squareImage3 {
+  object-fit: cover;
+  width: 300px;
+  height: 350px;
+  border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .imagColumn {
+    order: 1;
+    margin-bottom: 0;
+  }
+
+  .textColumn {
+    order: 2;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .evenBlock .textColumn {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .imageRow {
+    flex-wrap: wrap;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 500px) {
+  .imageRow {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imageItem {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 450px) {
+  .textColumn {
+    order: 2;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .evenBlock .textColumn {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .imageRow {
+    padding: 0 1rem;
+    margin-top: 4rem;
+  }
+
+  .squareImage2 {
+    object-fit: cover;
+    width: 250px;
+    height: 300px;
+  }
+
+  .squareImage3 {
+    object-fit: cover;
+    width: 250px;
+    height: 300px;
+  }
+}

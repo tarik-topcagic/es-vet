@@ -17,7 +17,7 @@ export default function AboutPreview() {
           licu mesta, identifikaciju mikro čipova, farmaceutske proizvode...
         </p>
         <button className="button secondaryButton">
-          <Link href="/o-nama" className="secondaryButtonLink">
+          <Link href="/o-nama#about-section" className="secondaryButtonLink">
             Saznaj više
           </Link>
         </button>
