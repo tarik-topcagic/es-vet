@@ -3,6 +3,7 @@
 import React from 'react';
 import Hero from '../../components/Hero/Hero';
 import heroImage from '../../../public/hero3.png';
+import AboutContainer from '@/components/AboutContainer/AboutContainer';
 
 const Home: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
         mobileNumber="+(387) 062-647-943"
         imageUrl={heroImage.src} 
       />
+      <AboutContainer/>
     </div>
   );
 };
