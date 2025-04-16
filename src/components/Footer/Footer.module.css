@@ -1,0 +1,38 @@
+.footer {
+  width: 100%;
+  background-color: #3fa9a4;
+  bottom: 0;
+  left: 0;
+  padding: 1rem 0;
+  text-align: center;
+  color: #fff;
+  font-size: 0.9rem;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.scrollTopLink {
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.scrollTopLink:hover {
+  color: #f7fcfd;
+}
+
+@media (max-width: 450px) {
+  .footer {
+    padding: 0.8rem 0;
+    font-size: 0.8rem;
+  }
+  .footerContent {
+    padding: 0 1rem;
+  }
+}

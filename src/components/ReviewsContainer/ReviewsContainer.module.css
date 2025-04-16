@@ -1,0 +1,110 @@
+.reviewContainer {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  background-color: #fff;
+  border: none;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sectionTitle {
+  font-size: 1.7rem;
+  color: #055b67;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+}
+
+.starsRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.starIcon {
+  color: #3fa9a4;
+  fill: #3fa9a4;
+  font-size: 1.7rem;
+  margin: 0 2px;
+}
+
+.avatarCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #eef8f9;
+  margin: 0 auto 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userIcon {
+  font-size: 1.5rem;
+  color: #055b67;
+}
+
+.reviewContent {
+  transition: opacity 0.3s ease;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.fadeIn {
+  opacity: 1;
+}
+
+.reviewText {
+  color: #055b67;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  font-size: 1rem;
+}
+
+.userName {
+  font-weight: 600;
+  color: #055b67;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.userCity {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.arrowsRow {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.arrowBtn {
+  background: #fff;
+  border: 1px solid #055b67;
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #055b67;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.arrowBtn:hover {
+  background-color: #f7fcfd;
+  border-color: #3fa9a4;
+  color: #055b67;
+}
+
+@media (max-width: 450px) {
+  .sectionTitle {
+    font-size: 1.4rem;
+  }
+}
