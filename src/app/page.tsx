@@ -6,6 +6,7 @@ import heroImage from '../../public/hero1.png';
 import ServicesPreview from '@/components/ServicesPreview/ServicesPreview';
 import AboutPreview from '@/components/AboutPreview/AboutPreview';
 import SloganPreview from '@/components/SloganPreview/SloganPreview';
+import ReviewsContainer from '@/components/ReviewsContainer/ReviewsContainer';
 
 const Home: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const Home: React.FC = () => {
       <ServicesPreview/>
       <AboutPreview/>
       <SloganPreview/>
+      <ReviewsContainer/>
     </div>
   );
 };

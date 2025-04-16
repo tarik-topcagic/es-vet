@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar/Navbar";
 import StickyContactNavbar from "./StickyContactNavbar/StickyContactNavbar";
+import Footer from "./Footer/Footer";
 
 const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -55,13 +56,12 @@ const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      {/* Originalni navbar s referencom */}
       <div ref={navbarRef}>
         <Navbar bgColor={getBgColor()} setMobileMenuOpen={setMobileMenuOpen} />
       </div>
-      {/* Sticky navbar – prima prop "show" */}
       <StickyContactNavbar show={showSticky} />
       <main>{children}</main>
+      <Footer />
     </>
   );
 };
