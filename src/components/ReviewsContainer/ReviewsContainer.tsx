@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./ReviewsContainer.module.css";
-import { Star, ArrowLeft, ArrowRight, User } from "lucide-react";
+import { User } from "lucide-react";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 interface Review {
   text: string;
@@ -37,25 +38,49 @@ export default function ReviewsContainer() {
   const randomIndex = Math.floor(Math.random() * reviewsData.length);
   const [currentIndex, setCurrentIndex] = useState(randomIndex);
   const [isFading, setIsFading] = useState(false);
+  const intervalRef = useRef<number | null>(null);
 
-  const prevReview = () => {
+  const clearTimer = () => {
+    if (intervalRef.current !== null) {
+      window.clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
+  const triggerNext = useCallback(() => {
     setIsFading(true);
     setTimeout(() => {
-      setCurrentIndex((prev) =>
-        prev === 0 ? reviewsData.length - 1 : prev - 1
-      );
+      setCurrentIndex((i) => (i === reviewsData.length - 1 ? 0 : i + 1));
       setIsFading(false);
+    }, 300);
+  }, []);
+
+  useEffect(() => {
+    clearTimer();
+    intervalRef.current = window.setInterval(() => {
+      triggerNext();
+    }, 5000);
+    return clearTimer;
+  }, [triggerNext]);
+
+  const triggerPrev = () => {
+    clearTimer();
+    setIsFading(true);
+    setTimeout(() => {
+      setCurrentIndex((i) => (i === 0 ? reviewsData.length - 1 : i - 1));
+      setIsFading(false);
+      intervalRef.current = window.setInterval(() => {
+        triggerNext();
+      }, 5000);
     }, 300);
   };
 
-  const nextReview = () => {
-    setIsFading(true);
-    setTimeout(() => {
-      setCurrentIndex((prev) =>
-        prev === reviewsData.length - 1 ? 0 : prev + 1
-      );
-      setIsFading(false);
-    }, 300);
+  const triggerNextAndRestart = () => {
+    clearTimer();
+    triggerNext();
+    intervalRef.current = window.setInterval(() => {
+      triggerNext();
+    }, 5000);
   };
 
   const { text, user, city } = reviewsData[currentIndex];
@@ -63,17 +88,9 @@ export default function ReviewsContainer() {
   return (
     <div className={styles.reviewContainer}>
       <h2 className={styles.sectionTitle}>Šta kažu naši klijenti</h2>
-
-      <div className={styles.starsRow}>
-        {[...Array(5)].map((_, i) => (
-          <Star key={i} className={styles.starIcon} />
-        ))}
-      </div>
-
       <div className={styles.avatarCircle}>
         <User className={styles.userIcon} />
       </div>
-
       <div
         className={`${styles.reviewContent} ${
           isFading ? styles.fadeOut : styles.fadeIn
@@ -83,13 +100,18 @@ export default function ReviewsContainer() {
         <p className={styles.userName}>{user}</p>
         <p className={styles.userCity}>{city}</p>
       </div>
-
       <div className={styles.arrowsRow}>
-        <button className={styles.arrowBtn} onClick={prevReview}>
-          <ArrowLeft />
+        <button
+          className={`${styles.arrowBtn} ${styles.left}`}
+          onClick={triggerPrev}
+        >
+          <IoIosArrowBack />
         </button>
-        <button className={styles.arrowBtn} onClick={nextReview}>
-          <ArrowRight />
+        <button
+          className={` ${styles.arrowBtn} ${styles.right}`}
+          onClick={triggerNextAndRestart}
+        >
+          <IoIosArrowForward />
         </button>
       </div>
     </div>
