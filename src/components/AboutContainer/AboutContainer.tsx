@@ -34,7 +34,7 @@ export default function AboutContainer() {
           </h3>
           <p className={styles.paragraph}>
             E. S. Vet d.o.o. je veterinarska stanica koja je potpuno posvećena
-            dobrobiti Vaših ljubimaca. Nudimo preventivnu njegu, opću kirurgiju,
+            dobrobiti Vaših ljubimaca. Nudimo preventivnu njegu, opću hirurgiju,
             zubne usluge, dijagnostičko snimanje, laboratorijska ispitivanja na
             licu mjesta, identifikaciju mikro čipova, farmaceutske proizvode...
           </p>
@@ -69,7 +69,7 @@ export default function AboutContainer() {
             posvećenosti jedinstvenim potrebama svakog pacijenta, cilj nam je da
             iskoristimo najnovija dostignuća u veterinarskoj medicini i da
             stalno poboljšavamo naš standard njege. Svakodnevno se trudimo da
-            iskoristimo svoje vještine, znanje i saosjećanje da bismo služili
+            iskoristimo svoje vještine, znanje i suosjećanje da bismo služili
             Vama i Vašem ljubimcu.
           </p>
         </div>

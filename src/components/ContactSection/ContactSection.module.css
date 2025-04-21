@@ -1,0 +1,122 @@
+.contactSection {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  background-color: #3fa9a4;
+  color: white;
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+.mapContainer,
+.infoContainer {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  border: 0;
+  border-radius: 10px;
+}
+
+.infoContainer {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+}
+
+.infoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.infoList li {
+  display: flex;
+  align-items: start;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.infoList li:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+}
+
+.hours {
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 1500px) {
+  .infoContainer {
+    padding: 4rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .contactSection {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .contactSection {
+    flex-direction: column;
+  }
+
+  .mapContainer {
+    min-height: 250px;
+  }
+
+  .infoContainer {
+    padding: 1.2rem;
+  }
+
+  .infoList li {
+    align-items: start;
+  }
+
+  .title {
+    text-align: center;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 1000px) {
+  .infoList li {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .contactSection {
+    padding: 3rem 1.7rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .infoContainer {
+    padding: 0;
+    padding-top: 2rem;
+    margin: 0;
+  }
+}

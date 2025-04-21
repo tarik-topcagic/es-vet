@@ -26,7 +26,7 @@ const servicesData: Service[] = [
   },
   {
     id: 3,
-    title: "Operacija",
+    title: "Hirurgija",
     text: "Naša veterinarska stanica nudi sigurne i stručne hirurške usluge za različite medicinske potrebe vašeg ljubimca, uključujući operacije povreda, bolesti, kao i rutinske zahvate poput sterilizacije ili kastracije.",
     imageSrc: "/services3.jpeg",
   },

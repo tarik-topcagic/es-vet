@@ -4,6 +4,7 @@ import React from 'react';
 import Hero from '../../components/Hero/Hero';
 import heroImage from '../../../public/hero3.png';
 import AboutContainer from '@/components/AboutContainer/AboutContainer';
+import ContactSection from '@/components/ContactSection/ContactSection';
 
 const Home: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
         imageUrl={heroImage.src} 
       />
       <AboutContainer/>
+      <ContactSection/>
     </div>
   );
 };
