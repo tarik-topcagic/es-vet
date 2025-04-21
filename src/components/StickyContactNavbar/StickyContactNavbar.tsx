@@ -12,11 +12,11 @@ const StickyContactNavbar: React.FC<StickyContactNavbarProps> = ({ show }) => {
     <nav className={`${styles.stickyNavbar} ${!show ? styles.hidden : ""}`}>
       <div className={`${styles.contactBlock} ${styles.phone}`}>
         <Phone className={styles.icon} size={20} />
-        <span className={styles.text}>(037) 772-002</span>
+        <span className={styles.text}>(037) 772 – 002</span>
       </div>
       <div className={`${styles.contactBlock} ${styles.mobile}`}>
         <Smartphone className={styles.icon} size={20} />
-        <span className={styles.text}>+(387) 062-647-943</span>
+        <span className={styles.text}>+(387) 62 – 647 – 943</span>
       </div>
       <div className={`${styles.contactBlock} ${styles.email}`}>
         <Mail className={styles.icon} size={20} />

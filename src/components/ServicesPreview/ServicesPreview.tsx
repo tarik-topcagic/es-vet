@@ -70,7 +70,7 @@ export default function ServicesPreview() {
               />
             </div>
             <div className={styles.textContainer}>
-              <h3 className={styles.serviceTitle}>Operacija</h3>
+              <h3 className={styles.serviceTitle}>Hirurgija</h3>
               <p className={styles.serviceText}>
                 Izvodimo sigurne hirurške zahvate, uključujući sterilizaciju i
                 kastraciju.
