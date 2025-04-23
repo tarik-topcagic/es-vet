@@ -33,6 +33,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.textColumn.animate {
+  opacity: 1;
 }
 
 .sloganWrapper {

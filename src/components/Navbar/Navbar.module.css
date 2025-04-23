@@ -24,22 +24,6 @@
   background-color: #f8f7f3;
 }
 
-.home .menu.active {
-  background-color: #f2f6f6;
-}
-
-.services .menu.active {
-  background-color: #f9faf9;
-}
-
-.about .menu.active {
-  background-color: #dce6e2;
-}
-
-.contact .menu.active {
-  background-color: #f8f7f3;
-}
-
 .logo {
   display: flex;
   align-items: center;
@@ -63,6 +47,14 @@
 
 .menuItem:hover {
   opacity: 0.7;
+}
+
+.activeMenuItem {
+  color: #3fa9a4;
+}
+
+.activeMenuItem:hover {
+  opacity: 1;
 }
 
 .hamburger {
@@ -107,7 +99,6 @@
     top: 50px;
     left: 0;
     width: 100%;
-    background-color: #f4f9fc;
     margin: 0;
     padding: 0;
     z-index: 1000;
@@ -134,7 +125,25 @@
     border-bottom: none;
   }
 
+  .activeMenuItem {
+    color: #3fa9a4;
+  }
+
+  .activeMenuItem:hover {
+    opacity: 1;
+  }
+
   .hamburger {
     display: flex;
+  }
+}
+
+@media (max-width: 1200px) {
+  .navbar {
+    background-color: #f2f6f6 !important;
+  }
+
+  .menu.active {
+    background-color: #f2f6f6 !important;
   }
 }

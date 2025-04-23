@@ -54,22 +54,42 @@ const Navbar: React.FC<NavbarProps> = ({ bgColor, setMobileMenuOpen }) => {
 
       <ul className={`${styles.menu} ${isMenuOpen ? styles.active : ""}`}>
         <li>
-          <Link href="/" className={styles.menuItem}>
+          <Link
+            href="/"
+            className={`${styles.menuItem} ${
+              pathname === "/" ? styles.activeMenuItem : ""
+            }`}
+          >
             Početna
           </Link>
         </li>
         <li>
-          <Link href="/usluge" className={styles.menuItem}>
+          <Link
+            href="/usluge"
+            className={`${styles.menuItem} ${
+              pathname === "/usluge" ? styles.activeMenuItem : ""
+            }`}
+          >
             Usluge
           </Link>
         </li>
         <li>
-          <Link href="/o-nama" className={styles.menuItem}>
+          <Link
+            href="/o-nama"
+            className={`${styles.menuItem} ${
+              pathname === "/o-nama" ? styles.activeMenuItem : ""
+            }`}
+          >
             O nama
           </Link>
         </li>
         <li>
-          <Link href="/kontakt" className={styles.menuItem}>
+          <Link
+            href="/kontakt"
+            className={`${styles.menuItem} ${
+              pathname === "/kontakt" ? styles.activeMenuItem : ""
+            }`}
+          >
             Kontakt
           </Link>
         </li>

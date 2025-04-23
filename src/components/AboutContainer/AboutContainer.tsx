@@ -53,7 +53,7 @@ export default function AboutContainer() {
       <div className={`${styles.row} ${styles.evenBlock}`}>
         <div className={styles.imgColumn}>
           <Image
-            src="/operating-room.jpg"
+            src="/operation-table.jpg"
             alt="Vet Operating Room"
             width={250}
             height={250}

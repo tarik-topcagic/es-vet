@@ -23,6 +23,7 @@
   gap: 8px;
   padding: 10px;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 .phone {
@@ -36,6 +37,11 @@
 .email {
   background-color: #ffffff;
   color: #055b67;
+}
+
+.phone:hover,
+.mobile:hover {
+  text-decoration: underline;
 }
 
 .icon {
