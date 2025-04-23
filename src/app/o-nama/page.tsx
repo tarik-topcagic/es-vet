@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Hero from '../../components/Hero/Hero';
-import heroImage from '../../../public/hero3.png';
-import AboutContainer from '@/components/AboutContainer/AboutContainer';
-import ContactSection from '@/components/ContactSection/ContactSection';
+import React from "react";
+import Hero from "../../components/Hero/Hero";
+import heroImage from "../../../public/hero3.png";
+import AboutContainer from "@/components/AboutContainer/AboutContainer";
+import ContactSection from "@/components/ContactSection/ContactSection";
 
 const Home: React.FC = () => {
   return (
@@ -14,12 +14,12 @@ const Home: React.FC = () => {
         subtitle="Gdje ljubav prema životinjama susreće stručnost"
         buttonText1="Kontaktirajte nas"
         buttonText2="Naše usluge"
-        phoneNumber="(037) 772-002"
-        mobileNumber="+(387) 062-647-943"
-        imageUrl={heroImage.src} 
+        phoneNumber="037 772 – 002"
+        mobileNumber="+387 62 – 647 – 943"
+        imageUrl={heroImage.src}
       />
-      <AboutContainer/>
-      <ContactSection/>
+      <AboutContainer />
+      <ContactSection />
     </div>
   );
 };

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import styles from "./Lightbox.module.css";
 
 interface LightboxProps {
@@ -32,7 +33,7 @@ export default function Lightbox({
           ×
         </button>
         <button onClick={prevImage} className={styles.leftArrow}>
-          ←
+          <IoIosArrowBack />
         </button>
         <div className={styles.imageContainer}>
           <Image
@@ -43,7 +44,7 @@ export default function Lightbox({
           />
         </div>
         <button onClick={nextImage} className={styles.rightArrow}>
-          →
+          <IoIosArrowForward />
         </button>
       </div>
     </div>

@@ -12,6 +12,13 @@
 .infoContainer {
   flex: 1 1 50%;
   min-width: 0;
+  opacity: 0;
+  transform: translateX(0);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.mapContainer {
+  transform: translateX(-50px);
 }
 
 .map {
@@ -27,6 +34,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transform: translateX(50px);
+}
+
+.slideInLeft {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slideInRight {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .title {
@@ -52,16 +69,21 @@
   margin-bottom: 2rem;
 }
 
+.phoneLink {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.phoneLink:hover {
+  text-decoration: underline;
+}
+
 .icon {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
   margin-right: 1rem;
-}
-
-.hours {
-  font-style: italic;
-  font-size: 0.95rem;
 }
 
 @media (min-width: 1500px) {
