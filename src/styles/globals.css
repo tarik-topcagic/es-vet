@@ -57,6 +57,14 @@ body {
   color: #054a63;
 }
 
+.button:disabled,
+.primaryButton:disabled,
+.secondaryButton:disabled {
+  opacity: 0.7;              
+  cursor: not-allowed;       
+  pointer-events: none;     
+}
+
 @media (max-width: 450px) {
   .button {
     white-space: nowrap;

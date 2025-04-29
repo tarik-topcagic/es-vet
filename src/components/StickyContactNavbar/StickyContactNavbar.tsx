@@ -10,23 +10,25 @@ interface StickyContactNavbarProps {
 const StickyContactNavbar: React.FC<StickyContactNavbarProps> = ({ show }) => {
   return (
     <nav className={`${styles.stickyNavbar} ${!show ? styles.hidden : ""}`}>
-      <a
-        href="tel:037772002"
-        className={`${styles.contactBlock} ${styles.phone}`}
-      >
-        <Phone className={styles.icon} size={20} />
-        <span className={styles.text}>037 772 – 002</span>
-      </a>
-      <a
-        href="tel:+38762647943"
-        className={`${styles.contactBlock} ${styles.mobile}`}
-      >
-        <Smartphone className={styles.icon} size={20} />
-        <span className={styles.text}>+387 62 – 647 – 943</span>
-      </a>
+      <div className={`${styles.contactBlock} ${styles.phone}`}>
+        <a href="tel:037772002" className={styles.link}>
+          <Phone className={styles.icon} size={20} />
+          <span className={styles.text}>Telefon</span>
+        </a>
+      </div>
+
+      <div className={`${styles.contactBlock} ${styles.mobile}`}>
+        <a href="tel:+38762647943" className={styles.link}>
+          <Smartphone className={styles.icon} size={20} />
+          <span className={styles.text}>Mobitel</span>
+        </a>
+      </div>
+
       <div className={`${styles.contactBlock} ${styles.email}`}>
-        <Mail className={styles.icon} size={20} />
-        <span className={styles.text}>esvet.vk@gmail.com</span>
+        <a href="mailto:esvet.vk@gmail.com" className={styles.link}>
+          <Mail className={styles.icon} size={20} />
+          <span className={styles.text}>E-mail</span>
+        </a>
       </div>
     </nav>
   );
