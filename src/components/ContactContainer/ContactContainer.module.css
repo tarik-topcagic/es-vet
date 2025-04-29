@@ -160,6 +160,31 @@
   pointer-events: none;
 }
 
+.error {
+  color: rgb(203, 0, 0);
+  font-size: 0.9rem;
+  display: block;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 10000;
+  animation: fadeInOut 3s forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10%, 90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
 @media (max-width: 1000px) {
   .contactSection {
     flex-direction: column;

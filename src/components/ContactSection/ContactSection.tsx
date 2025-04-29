@@ -70,7 +70,10 @@ export default function ContactSection() {
             </a>
           </li>
           <li>
-            <Mail className={styles.icon} /> esvet.vk@gmail.com
+            <Mail className={styles.icon} />
+            <a href="mailto:esvet.vk@gmail.com" className={styles.phoneLink}>
+              esvet.vk@gmail.com
+            </a>
           </li>
           <li>
             <Clock className={styles.icon} /> Ponedjeljak – Subota: 08h – 15h
