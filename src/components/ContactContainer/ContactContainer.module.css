@@ -362,6 +362,10 @@
     font-size: 1.4rem;
   }
 
+  .successMessage {
+    font-size: 1.1rem;
+  }
+
   .submitBtn {
     width: 100%;
     justify-content: center;

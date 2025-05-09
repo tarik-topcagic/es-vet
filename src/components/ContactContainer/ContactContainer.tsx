@@ -187,7 +187,7 @@ export default function ContactContainer() {
   const mobile = "+387 62 – 647 – 943";
 
   return (
-    <section className={styles.contactWrapper}>
+    <section id="contact-section" className={styles.contactWrapper}>
       <div className={styles.innerWrapper}>
         <div
           ref={contactRef}
