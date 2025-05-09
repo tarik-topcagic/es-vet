@@ -1,13 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./ServicesPreview.module.css";
 import Link from "next/link";
 
 export default function ServicesPreview() {
+  const previewRef = useRef<HTMLDivElement>(null);
+  const [animatePreview, setAnimatePreview] = useState(false);
+
+  useEffect(() => {
+    const el = previewRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry], obs) => {
+        if (entry.isIntersecting) {
+          setAnimatePreview(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={styles.servicesPreviewContainer}>
+    <div
+      ref={previewRef}
+      className={`${styles.servicesPreviewContainer} ${
+        animatePreview ? styles.animatePreview : ""
+      }`}
+    >
       <div className={styles.headerRow}>
         <h2 className={styles.sectionTitle}>Naše usluge</h2>
       </div>

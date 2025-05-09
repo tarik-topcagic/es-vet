@@ -21,6 +21,7 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .imageContainer {

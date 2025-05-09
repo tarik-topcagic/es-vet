@@ -20,7 +20,7 @@ export default function ContactSection() {
           obs.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
     obs.observe(sectionRef.current);
     return () => obs.disconnect();

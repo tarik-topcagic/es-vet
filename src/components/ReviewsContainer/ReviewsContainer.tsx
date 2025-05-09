@@ -59,7 +59,7 @@ export default function ReviewsContainer() {
     clearTimer();
     intervalRef.current = window.setInterval(() => {
       triggerNext();
-    }, 5000);
+    }, 3000);
     return clearTimer;
   }, [triggerNext]);
 
@@ -71,7 +71,7 @@ export default function ReviewsContainer() {
       setIsFading(false);
       intervalRef.current = window.setInterval(() => {
         triggerNext();
-      }, 5000);
+      }, 3000);
     }, 300);
   };
 
@@ -80,7 +80,7 @@ export default function ReviewsContainer() {
     triggerNext();
     intervalRef.current = window.setInterval(() => {
       triggerNext();
-    }, 5000);
+    }, 3000);
   };
 
   const { text, user, city } = reviewsData[currentIndex];
