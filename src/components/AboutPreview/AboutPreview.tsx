@@ -1,14 +1,38 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./AboutPreview.module.css";
 import Link from "next/link";
 
 export default function AboutPreview() {
+  const [animate, setAnimate] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimate(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className={styles.aboutPreviewContainer}>
-      <div className={styles.textColumn}>
+      <div
+        ref={contentRef}
+        className={`${styles.textColumn} ${animate ? styles.animate : ""}`}
+      >
         <h2 className={styles.aboutTitle}>O nama</h2>
         <p className={styles.aboutText}>
           E. S. Vet d.o.o. je veterinarska stanica koja je potpuno posvećena

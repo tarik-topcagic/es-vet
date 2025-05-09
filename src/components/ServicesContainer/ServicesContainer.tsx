@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./ServicesContainer.module.css";
 
@@ -69,6 +69,28 @@ const servicesData: Service[] = [
 ];
 
 export default function ServicesContainer() {
+  const blocksRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.visible);
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    blocksRef.current.forEach((block) => {
+      if (block) observer.observe(block);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className={styles.servicesContainer}>
       {servicesData.map((service, index) => {
@@ -77,11 +99,15 @@ export default function ServicesContainer() {
           <div
             key={service.id}
             id={index === 0 ? "firstService" : undefined}
-            className={`${styles.serviceBlock} ${
-              isEven ? styles.evenBlock : styles.oddBlock
-            }`}
+            className={`
+              ${styles.serviceBlock}
+              ${isEven ? styles.evenBlock : styles.oddBlock}
+            `}
+            ref={(el) => {
+              if (el) blocksRef.current[index] = el;
+            }}
           >
-            {!isEven && (
+            {!isEven ? (
               <>
                 <div className={styles.serviceText}>
                   <h3>{service.title}</h3>
@@ -97,8 +123,7 @@ export default function ServicesContainer() {
                   />
                 </div>
               </>
-            )}
-            {isEven && (
+            ) : (
               <>
                 <div className={styles.serviceImage}>
                   <Image

@@ -55,31 +55,131 @@
   border-radius: 10px;
 }
 
-.imageRow {
+.imagesContainer {
   display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 3rem;
-  margin-top: 5rem;
-  padding: 4rem;
-  overflow-x: auto;
-  width: 100%;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.animateGallery {
+  opacity: 1;
+}
+
+.galleryTitle {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #055b67;
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.imageRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  padding: 0 4rem;
   box-sizing: border-box;
+  margin-bottom: 4rem;
+  transition: grid-template-columns 0.4s ease-in-out, gap 0.4s ease-in-out,
+    padding 0.4s ease-in-out;
 }
 
 .imageItem {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
+  width: 100%;
 }
 
 .squareImage3 {
+  width: 100%;
+  aspect-ratio: 250 / 350;
   object-fit: cover;
-  width: 300px;
-  height: 350px;
   border-radius: 10px;
+}
+
+.imageItem,
+.squareImage3 {
+  transition: transform 0.3s ease-in-out;
+}
+.imageItem:hover .squareImage3 {
+  transform: scale(1.02);
+}
+
+.slideshow {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.navButton {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: #055b67;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slideImage {
+  cursor: pointer;
+}
+
+.textColumn,
+.imgColumn {
+  opacity: 0;
+}
+
+@keyframes slideFadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideFadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 901px) {
+  .row.visible .textColumn,
+  .row.visible .imgColumn {
+    animation: slideFadeInFromRight 0.8s ease-out forwards;
+  }
+  .evenBlock.visible .textColumn,
+  .evenBlock.visible .imgColumn {
+    animation: slideFadeInFromLeft 0.8s ease-out forwards;
+  }
+}
+
+@media (max-width: 1200px) {
+  .imageRow {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 3rem;
+  }
 }
 
 @media (max-width: 900px) {
@@ -90,9 +190,9 @@
     gap: 2rem;
   }
 
-  .imagColumn {
-    order: 1;
-    margin-bottom: 0;
+  .imageRow {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 2rem;
   }
 
   .textColumn {
@@ -112,13 +212,18 @@
     flex-wrap: wrap;
     overflow-x: hidden;
   }
+
+  .visible .textColumn,
+  .visible .imgColumn {
+    animation: slideFadeInUp 0.8s ease-out forwards;
+  }
 }
 
 @media (max-width: 500px) {
   .imageRow {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 0 1rem;
   }
 
   .imageItem {
@@ -144,13 +249,17 @@
     text-align: left;
   }
 
-  .title {
+  .title,
+  .galleryTitle {
     font-size: 1.4rem;
   }
 
   .imageRow {
-    padding: 0 1rem;
-    margin-top: 4rem;
+    display: none;
+  }
+
+  .slideshow {
+    display: flex;
   }
 
   .squareImage2 {
@@ -163,5 +272,13 @@
     object-fit: cover;
     width: 250px;
     height: 300px;
+  }
+}
+
+@media (min-width: 451px) {
+  .slideshow,
+  .navButton,
+  .slideImage {
+    display: none;
   }
 }
