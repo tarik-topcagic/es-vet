@@ -49,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ bgColor, setMobileMenuOpen }) => {
   return (
     <nav className={`${styles.navbar} ${styles[bgColor]}`}>
       <Link href="/" className={styles.logo}>
-        <Image src="/logo.png" alt="ES-Vet Logo" width={100} height={30} />
+        <Image src="/logo.webp" alt="ES-Vet Logo" width={100} height={30} />
       </Link>
 
       <ul className={`${styles.menu} ${isMenuOpen ? styles.active : ""}`}>

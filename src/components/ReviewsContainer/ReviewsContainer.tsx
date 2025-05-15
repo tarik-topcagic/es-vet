@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React from "react";
 import styles from "./ReviewsContainer.module.css";
 import { User } from "lucide-react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { useSlider } from "../hooks/useSlider";
 
 interface Review {
   text: string;
@@ -13,76 +14,28 @@ interface Review {
 
 const reviewsData: Review[] = [
   {
-    text: '"Prijatno osoblje, uslužni i na pravoj lokaciji"',
+    text: `"Prijatno osoblje, uslužni i na pravoj lokaciji"`,
     user: "Asim Omeragić",
     city: "Velika Kladuša",
   },
   {
-    text: '"Da bi vaši kućni ljubimci bili sigurni, te da bi vaša domaća grla (krave, konji, ovce i koze) bili zdravi posjetite ovu ustanovu...."',
+    text: `"Da bi vaši kućni ljubimci bili sigurni, te da bi vaša domaća grla (krave, konji, ovce i koze) bili zdravi posjetite ovu ustanovu...."`,
     user: "Fikret Nizandžić",
     city: "Velika Kladuša",
   },
   {
-    text: '"Odlični su"',
+    text: `"Odlični su"`,
     user: "Fadil Begulić",
     city: "Velika Kladuša",
-  },
-  {
-    text: '"Svaka čast, nikad brže nisam obavio pregled i vakcinaciju psa. Osoblje je fantastično!"',
-    user: "Tarik Topčagić",
-    city: "Cazin",
   },
 ];
 
 export default function ReviewsContainer() {
-  const randomIndex = Math.floor(Math.random() * reviewsData.length);
-  const [currentIndex, setCurrentIndex] = useState(randomIndex);
-  const [isFading, setIsFading] = useState(false);
-  const intervalRef = useRef<number | null>(null);
-
-  const clearTimer = () => {
-    if (intervalRef.current !== null) {
-      window.clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-
-  const triggerNext = useCallback(() => {
-    setIsFading(true);
-    setTimeout(() => {
-      setCurrentIndex((i) => (i === reviewsData.length - 1 ? 0 : i + 1));
-      setIsFading(false);
-    }, 300);
-  }, []);
-
-  useEffect(() => {
-    clearTimer();
-    intervalRef.current = window.setInterval(() => {
-      triggerNext();
-    }, 3000);
-    return clearTimer;
-  }, [triggerNext]);
-
-  const triggerPrev = () => {
-    clearTimer();
-    setIsFading(true);
-    setTimeout(() => {
-      setCurrentIndex((i) => (i === 0 ? reviewsData.length - 1 : i - 1));
-      setIsFading(false);
-      intervalRef.current = window.setInterval(() => {
-        triggerNext();
-      }, 3000);
-    }, 300);
-  };
-
-  const triggerNextAndRestart = () => {
-    clearTimer();
-    triggerNext();
-    intervalRef.current = window.setInterval(() => {
-      triggerNext();
-    }, 3000);
-  };
-
+  const { currentIndex, isFading, goPrev, restart } = useSlider({
+    length: reviewsData.length,
+    interval: 3000,
+    fadeDuration: 300,
+  });
   const { text, user, city } = reviewsData[currentIndex];
 
   return (
@@ -103,13 +56,13 @@ export default function ReviewsContainer() {
       <div className={styles.arrowsRow}>
         <button
           className={`${styles.arrowBtn} ${styles.left}`}
-          onClick={triggerPrev}
+          onClick={goPrev}
         >
           <IoIosArrowBack />
         </button>
         <button
-          className={` ${styles.arrowBtn} ${styles.right}`}
-          onClick={triggerNextAndRestart}
+          className={`${styles.arrowBtn} ${styles.right}`}
+          onClick={restart}
         >
           <IoIosArrowForward />
         </button>

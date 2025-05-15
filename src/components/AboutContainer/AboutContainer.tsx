@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./AboutContainer.module.css";
 import Lightbox from "../Lightbox/Lightbox";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { LayoutGroup, motion } from "framer-motion";
+import { useOnScreen } from "../hooks/useOnScreen";
+import { useSlider } from "../hooks/useSlider";
 
 export default function AboutContainer() {
   const lightboxImages = [
@@ -19,78 +21,45 @@ export default function AboutContainer() {
     "/bath.jpg",
   ];
 
+  const {
+    currentIndex: slideIndex,
+    isFading: galleryFading,
+    goNext: nextSlide,
+    goPrev: prevSlide,
+    goTo: goToSlide,
+  } = useSlider({
+    length: lightboxImages.length,
+    interval: 3000,
+    fadeDuration: 0,
+  });
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [slideIndex, setSlideIndex] = useState(0);
-  const rowsRef = useRef<HTMLDivElement[]>([]);
-  const galleryRef = useRef<HTMLDivElement>(null);
-  const [animateGallery, setAnimateGallery] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    rowsRef.current.forEach((row) => row && observer.observe(row));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const el = galleryRef.current;
-    if (!el) return;
-
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimateGallery(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
     setIsLightboxOpen(true);
   };
-
   const closeLightbox = (finalIndex: number) => {
-    setSlideIndex(finalIndex);
+    goToSlide(finalIndex);
     setIsLightboxOpen(false);
   };
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setSlideIndex((i) => (i + 1) % lightboxImages.length);
-    }, 3000);
-    return () => clearInterval(id);
-  }, [slideIndex, lightboxImages.length]);
+  const row0Ref = useRef<HTMLDivElement | null>(null);
+  const row1Ref = useRef<HTMLDivElement | null>(null);
+  const row2Ref = useRef<HTMLDivElement | null>(null);
+  const galleryRef = useRef<HTMLDivElement | null>(null);
 
-  const prevSlide = () => {
-    setSlideIndex((i) => (i === 0 ? lightboxImages.length - 1 : i - 1));
-  };
-  const nextSlide = () => {
-    setSlideIndex((i) => (i === lightboxImages.length - 1 ? 0 : i + 1));
-  };
+  const row0Visible = useOnScreen(row0Ref, "0px", 0.1);
+  const row1Visible = useOnScreen(row1Ref, "0px", 0.1);
+  const row2Visible = useOnScreen(row2Ref, "0px", 0.1);
+  const galleryVisible = useOnScreen(galleryRef, "0px", 0.1);
 
   return (
     <section className={styles.aboutContainer}>
       <div
         id="about-section"
-        className={styles.row}
-        ref={(el) => {
-          if (el) rowsRef.current[0] = el;
-        }}
+        ref={row0Ref}
+        className={`${styles.row} ${row0Visible ? styles.visible : ""}`}
       >
         <div className={styles.textColumn}>
           <h3 className={styles.title}>
@@ -105,7 +74,7 @@ export default function AboutContainer() {
         </div>
         <div className={styles.imgColumn}>
           <Image
-            src="/dog.jpg"
+            src="/dog.webp"
             alt="Dog"
             width={250}
             height={250}
@@ -115,10 +84,10 @@ export default function AboutContainer() {
       </div>
 
       <div
-        className={`${styles.row} ${styles.evenBlock}`}
-        ref={(el) => {
-          if (el) rowsRef.current[1] = el;
-        }}
+        ref={row1Ref}
+        className={`${styles.row} ${styles.evenBlock} ${
+          row1Visible ? styles.visible : ""
+        }`}
       >
         <div className={styles.imgColumn}>
           <Image
@@ -145,10 +114,8 @@ export default function AboutContainer() {
       </div>
 
       <div
-        className={styles.row}
-        ref={(el) => {
-          if (el) rowsRef.current[2] = el;
-        }}
+        ref={row2Ref}
+        className={`${styles.row} ${row2Visible ? styles.visible : ""}`}
       >
         <div className={styles.textColumn}>
           <h3 className={styles.title}>
@@ -174,32 +141,32 @@ export default function AboutContainer() {
       <div
         ref={galleryRef}
         className={`${styles.imagesContainer} ${
-          animateGallery ? styles.animateGallery : ""
+          galleryVisible ? styles.animateGallery : ""
         }`}
       >
         <h3 className={styles.galleryTitle}>Galerija</h3>
-
+        <div
+          onClick={() => openLightbox(slideIndex)}
+          className={`${styles.slideImage} ${
+            galleryFading ? styles.fadeOut : styles.fadeIn
+          }`}
+        >
+          <Image
+            src={lightboxImages[slideIndex]}
+            alt={`Slika ${slideIndex + 1}`}
+            width={250}
+            height={250}
+            className={styles.squareImage3}
+          />
+        </div>
         <div className={styles.slideshow}>
           <button onClick={prevSlide} className={styles.navButton}>
             <IoIosArrowBack />
           </button>
-          <div
-            onClick={() => openLightbox(slideIndex)}
-            className={styles.slideImage}
-          >
-            <Image
-              src={lightboxImages[slideIndex]}
-              alt={`Slika ${slideIndex + 1}`}
-              width={250}
-              height={250}
-              className={styles.squareImage3}
-            />
-          </div>
           <button onClick={nextSlide} className={styles.navButton}>
             <IoIosArrowForward />
           </button>
         </div>
-
         <LayoutGroup>
           <motion.div
             className={styles.imageRow}
@@ -220,6 +187,7 @@ export default function AboutContainer() {
                   width={250}
                   height={250}
                   className={styles.squareImage3}
+                  loading="lazy"
                 />
               </motion.div>
             ))}

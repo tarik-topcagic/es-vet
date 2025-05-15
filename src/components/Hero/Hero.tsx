@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import styles from "./Hero.module.css";
 import { PawPrint } from "lucide-react"; // Uvozimo ikonu
 import Link from "next/link";
+import { useOnScreen } from "../hooks/useOnScreen";
 
 interface HeroProps {
   title: string;
@@ -25,26 +26,8 @@ const Hero: React.FC<HeroProps> = ({
   imageUrl,
 }) => {
   const normalize = (num: string) => num.replace(/[^\d+]/g, "");
-  const [animate, setAnimate] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = contentRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimate(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const animate = useOnScreen(contentRef, "0px", 0.1);
 
   return (
     <section
@@ -60,21 +43,20 @@ const Hero: React.FC<HeroProps> = ({
         <p className={styles.subtitle}>{subtitle}</p>
         <div className={styles.buttons}>
           {buttonText1 && (
-            <button className="button primaryButton">
-              <Link
-                href="/kontakt#contact-section"
-                className="primaryButtonLink"
-              >
-                {buttonText1}
-              </Link>
-            </button>
+            <Link
+              href="/kontakt#contact-section"
+              className="button primaryButton"
+            >
+              {buttonText1}
+            </Link>
           )}
           {buttonText2 && (
-            <button className="button secondaryButton">
-              <Link href="/usluge#firstService" className="secondaryButtonLink">
-                {buttonText2}
-              </Link>
-            </button>
+            <Link
+              href="/kontakt#contact-section"
+              className="button secondaryButton"
+            >
+              {buttonText2}
+            </Link>
           )}
         </div>
         <div className={styles.contactInfo}>

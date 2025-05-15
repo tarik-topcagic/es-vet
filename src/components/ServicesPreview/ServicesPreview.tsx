@@ -1,35 +1,20 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import styles from "./ServicesPreview.module.css";
 import Link from "next/link";
+import { useOnScreen } from "../hooks/useOnScreen";
 
 export default function ServicesPreview() {
-  const previewRef = useRef<HTMLDivElement>(null);
-  const [animatePreview, setAnimatePreview] = useState(false);
-
-  useEffect(() => {
-    const el = previewRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry], obs) => {
-        if (entry.isIntersecting) {
-          setAnimatePreview(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const isVisible = useOnScreen(ref, "0px", 0);
 
   return (
     <div
-      ref={previewRef}
+      ref={ref}
       className={`${styles.servicesPreviewContainer} ${
-        animatePreview ? styles.animatePreview : ""
+        isVisible ? styles.animatePreview : ""
       }`}
     >
       <div className={styles.headerRow}>
@@ -42,11 +27,12 @@ export default function ServicesPreview() {
           <div className={styles.serviceContent}>
             <div className={styles.iconCircle}>
               <Image
-                src="/shield.png"
+                src="/shield.webp"
                 alt="Preventivna njega ikona"
                 width={60}
                 height={60}
                 className={styles.serviceIcon}
+                loading="lazy"
               />
             </div>
             <div className={styles.textContainer}>
@@ -64,11 +50,12 @@ export default function ServicesPreview() {
           <div className={styles.serviceContent}>
             <div className={styles.iconCircle}>
               <Image
-                src="/tooth.png"
+                src="/tooth.webp"
                 alt="Zubna usluga ikona"
                 width={60}
                 height={60}
                 className={styles.serviceIcon}
+                loading="lazy"
               />
             </div>
             <div className={styles.textContainer}>
@@ -86,11 +73,12 @@ export default function ServicesPreview() {
           <div className={styles.serviceContent}>
             <div className={styles.iconCircle}>
               <Image
-                src="/scalpel.png"
+                src="/scalpel.webp"
                 alt="Operacija ikona"
                 width={60}
                 height={60}
                 className={styles.serviceIcon}
+                loading="lazy"
               />
             </div>
             <div className={styles.textContainer}>
@@ -108,11 +96,12 @@ export default function ServicesPreview() {
           <div className={styles.serviceContent}>
             <div className={styles.iconCircle}>
               <Image
-                src="/microscope.png"
+                src="/microscope.webp"
                 alt="Laboratorijsko ispitivanje ikona"
                 width={60}
                 height={60}
                 className={styles.serviceIcon}
+                loading="lazy"
               />
             </div>
             <div className={styles.textContainer}>
@@ -128,11 +117,9 @@ export default function ServicesPreview() {
       </div>
 
       <div className={styles.buttonRow}>
-        <button className="button secondaryButton">
-          <Link href="/usluge#firstService" className="secondaryButtonLink">
-            Saznaj više
-          </Link>
-        </button>
+        <Link href="/usluge#firstService" className="button secondaryButton">
+          Saznaj više
+        </Link>
       </div>
     </div>
   );

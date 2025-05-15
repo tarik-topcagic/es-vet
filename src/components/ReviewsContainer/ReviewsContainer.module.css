@@ -77,19 +77,23 @@
 }
 
 .arrowBtn {
-  background: #fff;
-  border: none;
-  cursor: pointer;
+  background: #eef8f9;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   font-size: 1.4rem;
   color: #055b67;
+  border: 1px solid transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  text-align: center;
 }
 
 .arrowBtn:hover {
-  opacity: 0.7;
+  background-color: #d9eff1;
+  border-color: #b5e0e4;
+  opacity: 1;
 }
 
 @media (min-width: 801px) {

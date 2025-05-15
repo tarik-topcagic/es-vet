@@ -1,9 +1,12 @@
 "use client";
 
 import React from "react";
-import Hero from "../../components/Hero/Hero";
-import heroImage from "../../../public/hero4.jpg";
-import ContactContainer from "@/components/ContactContainer/ContactContainer";
+import heroImage from "../../../public/hero4.webp";
+import dynamic from "next/dynamic";
+const Hero = dynamic(() => import("../../components/Hero/Hero"));
+const ContactContainer = dynamic(
+  () => import("../../components/ContactContainer/ContactContainer")
+);
 
 const Home: React.FC = () => {
   return (

@@ -15,6 +15,7 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import ReCAPTCHA from "react-google-recaptcha";
 import type { ReCAPTCHA as ReCAPTCHAInstance } from "react-google-recaptcha";
+import { useOnScreen } from "../hooks/useOnScreen";
 
 type FormState = {
   name: string;
@@ -35,8 +36,6 @@ export default function ContactContainer() {
   >({});
   const [submitting, setSubmitting] = useState(false);
   const [formSent, setFormSent] = useState(false);
-  const [animateContact, setAnimateContact] = useState(false);
-  const [animate, setAnimate] = useState(false);
   const [recaptchaOK, setRecaptchaOK] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHAInstance>(null);
@@ -44,37 +43,8 @@ export default function ContactContainer() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const inputWrapperRef = useRef<HTMLDivElement>(null);
   const [toastError, setToastError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const el = contactRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry], obs) => {
-        if (entry.isIntersecting) {
-          setAnimateContact(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimate(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    obs.observe(sectionRef.current);
-    return () => obs.disconnect();
-  }, []);
+  const animateContact = useOnScreen(contactRef, "0px", 0);
+  const animate = useOnScreen(sectionRef, "0px", 0.1);
 
   useEffect(() => {
     if (inputWrapperRef.current) {
@@ -391,10 +361,11 @@ export default function ContactContainer() {
       </div>
       <div className={styles.overlayImage}>
         <Image
-          src="/catanddog.png"
+          src="/catanddog.webp"
           alt="Cat and dog"
           width={200}
           height={250}
+          loading="lazy"
         />
       </div>
 
