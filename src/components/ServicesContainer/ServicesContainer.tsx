@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./ServicesContainer.module.css";
 import { useOnScreen } from "../hooks/useOnScreen";
@@ -70,6 +70,16 @@ const servicesData: Service[] = [
 ];
 
 export default function ServicesContainer() {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === '#firstService') {
+      const element = document.getElementById('firstService');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+  
   return (
     <section className={styles.servicesContainer}>
       {servicesData.map((service, index) => (
@@ -91,7 +101,6 @@ function ServiceBlock({ service, index }: ServiceBlockProps) {
 
   return (
     <div
-      key={service.id}
       id={index === 0 ? "firstService" : undefined}
       ref={ref}
       className={`

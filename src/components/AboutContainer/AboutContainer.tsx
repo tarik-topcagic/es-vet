@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./AboutContainer.module.css";
 import Lightbox from "../Lightbox/Lightbox";
@@ -10,6 +10,16 @@ import { useOnScreen } from "../hooks/useOnScreen";
 import { useSlider } from "../hooks/useSlider";
 
 export default function AboutContainer() {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === '#about-section') {
+      const element = document.getElementById('about-section');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+
   const lightboxImages = [
     "/company-interior.jpg",
     "/work-room.jpg",
