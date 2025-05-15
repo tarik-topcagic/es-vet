@@ -91,6 +91,7 @@ function ServiceBlock({ service, index }: ServiceBlockProps) {
 
   return (
     <div
+      key={service.id}
       id={index === 0 ? "firstService" : undefined}
       ref={ref}
       className={`
