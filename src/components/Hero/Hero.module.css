@@ -56,7 +56,7 @@
 
 .buttons {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 
 .contactInfo {
@@ -173,7 +173,9 @@
     top: 44%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: #eef8f9;
     padding: 0 20px;
   }
@@ -200,7 +202,8 @@
   }
 
   .buttons {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .contactInfo {

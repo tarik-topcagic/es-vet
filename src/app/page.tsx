@@ -1,13 +1,24 @@
 "use client";
 
 import React from "react";
-import Hero from "../components/Hero/Hero";
-import heroImage from "../../public/hero1.png";
-import ServicesPreview from "@/components/ServicesPreview/ServicesPreview";
-import AboutPreview from "@/components/AboutPreview/AboutPreview";
-import SloganPreview from "@/components/SloganPreview/SloganPreview";
-import ReviewsContainer from "@/components/ReviewsContainer/ReviewsContainer";
-import ContactSection from "@/components/ContactSection/ContactSection";
+import heroImage from "../../public/hero1.webp";
+import dynamic from "next/dynamic";
+const Hero = dynamic(() => import("../components/Hero/Hero"));
+const ServicesPreview = dynamic(
+  () => import("../components/ServicesPreview/ServicesPreview")
+);
+const AboutPreview = dynamic(
+  () => import("../components/AboutPreview/AboutPreview")
+);
+const SloganPreview = dynamic(
+  () => import("../components/SloganPreview/SloganPreview")
+);
+const ReviewsContainer = dynamic(
+  () => import("../components/ReviewsContainer/ReviewsContainer")
+);
+const ContactSection = dynamic(
+  () => import("../components/ContactSection/ContactSection")
+);
 
 const Home: React.FC = () => {
   return (

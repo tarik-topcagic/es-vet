@@ -1,36 +1,23 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Home, MapPin, Phone, Smartphone, Mail, Clock } from "lucide-react";
 import styles from "./ContactSection.module.css";
+import { useOnScreen } from "../hooks/useOnScreen";
 
 export default function ContactSection() {
   const normalize = (num: string) => num.replace(/[^\d+]/g, "");
   const landline = "037 772 – 002";
   const mobile = "+387 62 – 647 – 943";
-  const [animate, setAnimate] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimate(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    obs.observe(sectionRef.current);
-    return () => obs.disconnect();
-  }, []);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const isVisible = useOnScreen(sectionRef, "0px", 0.1);
 
   return (
     <section ref={sectionRef} className={styles.contactSection}>
       <div
         className={`${styles.mapContainer} ${
-          animate ? styles.slideInLeft : ""
+          isVisible ? styles.slideInLeft : ""
         }`}
       >
         <iframe
@@ -45,7 +32,7 @@ export default function ContactSection() {
 
       <div
         className={`${styles.infoContainer} ${
-          animate ? styles.slideInRight : ""
+          isVisible ? styles.slideInRight : ""
         }`}
       >
         <h2 className={styles.title}>Posjetite nas</h2>

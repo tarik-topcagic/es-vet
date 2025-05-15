@@ -107,21 +107,30 @@
 }
 
 .slideshow {
-  display: none;
-  align-items: center;
+  display: flex;
   justify-content: center;
   gap: 1rem;
-  padding: 0 1rem;
-  box-sizing: border-box;
+  margin-bottom: 1rem;
 }
 
 .navButton {
-  background: transparent;
-  border: none;
+  background: #eef8f9;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   font-size: 1.4rem;
   color: #055b67;
-  cursor: pointer;
-  user-select: none;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.navBtn:hover {
+  background-color: #d9eff1;
+  border-color: #b5e0e4;
+  opacity: 1;
 }
 
 .slideImage {
@@ -259,7 +268,13 @@
   }
 
   .slideshow {
-    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .slideImage {
+    margin: 0 auto;
   }
 
   .squareImage2 {

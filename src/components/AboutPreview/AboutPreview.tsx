@@ -1,37 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import styles from "./AboutPreview.module.css";
 import Link from "next/link";
+import { useOnScreen } from "../hooks/useOnScreen";
 
 export default function AboutPreview() {
-  const [animate, setAnimate] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = contentRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimate(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const isVisible = useOnScreen(contentRef, "0px", 0.1);
 
   return (
     <section className={styles.aboutPreviewContainer}>
       <div
         ref={contentRef}
-        className={`${styles.textColumn} ${animate ? styles.animate : ""}`}
+        className={`${styles.textColumn} ${isVisible ? styles.animate : ""}`}
       >
         <h2 className={styles.aboutTitle}>O nama</h2>
         <p className={styles.aboutText}>
@@ -40,20 +23,18 @@ export default function AboutPreview() {
           zubne usluge, dijagnostičko snimanje, laboratorijska ispitivanja na
           licu mesta, identifikaciju mikro čipova, farmaceutske proizvode...
         </p>
-        <button className="button secondaryButton">
-          <Link href="/o-nama#about-section" className="secondaryButtonLink">
-            Saznaj više
-          </Link>
-        </button>
+        <Link href="/o-nama#about-section" className="button secondaryButton">
+          Saznaj više
+        </Link>
       </div>
 
       <div className={styles.imageColumn}>
         <Image
-          src="/vet.png"
+          src="/vet.webp"
           alt="Veterinar"
           className={styles.vetImage}
           fill
-          priority
+          loading="lazy"
         />
       </div>
     </section>

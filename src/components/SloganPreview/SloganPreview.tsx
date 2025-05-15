@@ -1,46 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import styles from "./SloganPreview.module.css";
+import { useOnScreen } from "../hooks/useOnScreen";
 
 export default function SloganPreview() {
-  const [animate, setAnimate] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = contentRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimate(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const isVisible = useOnScreen(contentRef, "0px", 0.1);
 
   return (
     <section className={styles.sloganPreviewContainer}>
       <div className={styles.imageColumn}>
         <Image
-          src="/owneranddog.png"
+          src="/owneranddog.webp"
           alt="Owner and Dog"
           className={styles.sloganImage}
           fill
-          priority
+          loading="lazy"
         />
       </div>
 
       <div
         ref={contentRef}
-        className={`${styles.textColumn} ${animate ? styles.animate : ""}`}
+        className={`${styles.textColumn} ${isVisible ? styles.animate : ""}`}
       >
         <div className={styles.sloganWrapper}>
           <div className={styles.lemonShape}></div>
