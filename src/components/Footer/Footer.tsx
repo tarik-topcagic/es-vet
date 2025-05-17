@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <a href="#top" className={styles.scrollTopLink}>
           es-vet.ba
         </a>{" "}
-        | Design by Tarik Topčagić
+        | Design by <a href="https://github.com/tarik-topcagic" className={styles.nameLink}>Tarik Topčagić</a>
       </div>
     </footer>
   );

@@ -16,14 +16,16 @@
   margin: 0 auto;
 }
 
-.scrollTopLink {
+.scrollTopLink,
+.nameLink {
   color: inherit;
   cursor: pointer;
   transition: color 0.2s ease;
   text-decoration: none;
 }
 
-.scrollTopLink:hover {
+.scrollTopLink:hover,
+.nameLink:hover {
   color: #f7fcfd;
 }
 
