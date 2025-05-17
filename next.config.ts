@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
         destination: "/kontakt",
         permanent: true,
       },
+      {
+        source: "/contact.html",
+        destination: "/kontakt",
+        permanent: true,
+      },
     ];
   },
 };
