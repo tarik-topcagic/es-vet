@@ -46,4 +46,4 @@ Then open http://localhost:3000 in your browser.
 
 ## 📄 License
 
-This project is for educational and portfolio purposes only.
+This project is developed for **E.S. - Vet** veterinary clinic and is intended for official use.
