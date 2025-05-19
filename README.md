@@ -1,11 +1,11 @@
 # 🐾 E. S. - Vet
 
-This is an official website under development for the **E. S. - Vet** veterinary clinic, built with **Next.js** and **React**.
-Project is still in development 🚧
+This is the **official website** of the veterinary clinic **E.S. - Vet**, developed using **Next.js** and **React**.  
+The website is now live and actively used by the clinic to provide essential information to clients.
 
 ## 🌐 Live Demo
 
-🔗 [Click here to view the website](https://es-vet.vercel.app/)
+🔗 [Click here to view the website](https://www.es-vet.ba)
 
 ## 🛠️ Tech Stack
 
